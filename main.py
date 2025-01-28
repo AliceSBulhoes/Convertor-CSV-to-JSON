@@ -11,3 +11,10 @@ file_json = input("Escreva o nome do arquivo JSON (sem o .json): ")
 csv_path = os.path.join("archive", f"{file_csv}.csv")
 json_path = os.path.join("json", f"{file_json}.json")
 temp_json_path = os.path.join("json", f"temp.json")
+
+# Lendo o CSV
+try:
+    data_frame = pd.read_csv(csv_path, low_memory=False)
+except FileNotFoundError:
+    print(f"Erro: O arquivo {csv_path} não foi encontrado.")
+    exit()
